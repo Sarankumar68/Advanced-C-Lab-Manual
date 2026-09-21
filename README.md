@@ -1,4 +1,4 @@
-**EXP NO:1 C PROGRAM FOR ARRAY OF STRUCTURE TO CHECK ELIGIBILITY FOR THE VACCINE.**
+EXP NO:1 C PROGRAM FOR ARRAY OF STRUCTURE TO CHECK ELIGIBILITY FOR THE VACCINE.
 
 Aim:
 To write a C program for array of structure to check eligibility for the vaccine person age above 6 years of age.
@@ -16,35 +16,39 @@ Else
  
 Program:
 ```
-#include<stdio.h> struct eligib
-{
-int age; char n[4];
+#include<stdio.h>
+struct person{
+    int x;
+    char y[20];
 };
 int main()
 {
-struct eligib e; scanf("%d%s",&e.age,e.n);
-if(e.age<=6)
-{
-printf("Age:%d\nName:%svaccine:%d\neligibility:no",e.age,e.n,e.age);
+   struct person p;
+   printf("Enter age: ");
+   scanf("%d",&p.x);
+   printf("Enter Name: ");
+   scanf("%s",p.y);
+   printf("Age:%d\n",p.x);
+   printf("Name:%s\n",p.y);
+   
+   if(p.x>6)
+   {
+       printf("eligibility:yes");
+   }
+   else
+   {
+       printf("eligibility:no");
+   }
 }
- 
-else
-{
-}
- 
-
-printf("Age:%d\nName:%svaccine:%d\neligibility:yes",e.age,e.n,e.age);
- 
-
-}
-
 ```
+
+
 
 
 Output:
 
-![Screenshot 2025-04-25 102120](https://github.com/user-attachments/assets/875d7abd-3282-4d64-96f7-b69834282f0a)
 
+<img width="918" height="227" alt="image" src="https://github.com/user-attachments/assets/69efdba8-16a3-42dd-ac6a-2722dd537200" />
 
 
 Result:
@@ -52,7 +56,7 @@ Thus, the program is verified successfully.
 
 
 
-**EXP NO:2 C PROGRAM FOR PASSING STRUCTURES AS FUNCTION ARGUMENTS AND RETURNING A STRUCTURE FROM A FUNCTION**
+EXP NO:2 C PROGRAM FOR PASSING STRUCTURES AS FUNCTION ARGUMENTS AND RETURNING A STRUCTURE FROM A FUNCTION
 Aim:
 To write a C program for passing structure as function and returning a structure from a function
 
@@ -67,30 +71,33 @@ Algorithm:
  
 Program:
 ```
-#include<stdio.h> struct numbers
-{
-int a; int b;
-}n;
-int add(struct numbers n); int main()
-{
+#include<stdio.h>
 
-scanf("%d %d ",&n.a,&n.b);
-printf("%d",add(n));
-}
-int add(struct numbers n)
-{
-return n.a+n.b;
+struct numbers {
+    int a;
+    int b;
+};
+
+int add(struct numbers n) {
+    return n.a + n.b;
 }
 
-
+int main() {
+    struct numbers num;
+    int sum;
+    scanf("%d %d", &num.a, &num.b);
+    sum = add(num);
+    printf("%d", sum);
+    return 0;
+}
 ```
+
+
+
 
 Output:
 
-![Screenshot 2025-04-25 102229](https://github.com/user-attachments/assets/c4fda8ea-7b67-47c2-9123-dfdae6e283a6)
-
-
-
+<img width="775" height="342" alt="image" src="https://github.com/user-attachments/assets/52ddae1a-4ce5-4ba2-8560-47b0c875c53d" />
 
 
 Result:
@@ -98,7 +105,7 @@ Thus, the program is verified successfully
 
 
  
-**EXP.NO:3 C PROGRAM TO READ A FILE NAME FROM USER AND WRITE THAT FILE USING FOPEN()**
+EXP.NO:3 C PROGRAM TO READ A FILE NAME FROM USER AND WRITE THAT FILE USING FOPEN()
 
 Aim:
 To write a C program to read a file name from user
@@ -122,31 +129,25 @@ Use scanf to input the file name into the name array.
  
 Program:
 ```
-#include <stdio.h> int main()
+#include <stdio.h>
+int main()
 {
-FILE *p;
-char name[30]; scanf("%s",name);
-printf("%s File Created Successfully",name); p=fopen("name","w");
-printf("\n%s File Opened",name); fclose(p);
-printf("\n%s File Closed",name);
+    char fn[100];
+    scanf("%s",fn);
+    FILE *file=fopen(fn,"w");
+    printf("%s File Created Successfully\n",fn);
+    printf("%s File Opened\n",fn);
+    fclose(file);
+    printf("%s File Closed\n",fn);
 }
-
 ```
+
+
 
 
 Output:
 
-
-![Screenshot 2025-04-25 102311](https://github.com/user-attachments/assets/26ae7632-11c8-4c2e-9627-3848ad724e46)
-
-
-
-
-
-
-
-
-
+<img width="1057" height="417" alt="image" src="https://github.com/user-attachments/assets/89f284e7-7efc-438c-a768-5df1f8efcf2d" />
 
 
 
@@ -177,31 +178,33 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 ```
-#include <stdio.h> int main()
+#include <stdio.h>
+int main()
 {
-FILE *p;
-char name[20]; int num;
-char text[50]; scanf("%s%d",name,&num); p=fopen("name","w"); printf("%s Opened",name); for(int i=0;i<num;i++)
-{
-scanf("%s",text); fputs(text,p);
+    char fn[100];
+    scanf("%s",fn);
+    
+    FILE *file=fopen(fn,"w");
+    printf("%s Opened\n",fn);
+    
+    int n;
+    char wd[100];
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s",wd);
+        fputs(wd,file);
+    }
+    printf("Data added Successfully");
 }
-printf("\nData added Successfully");
-
-}
-
-
-
 ```
+
+
+
+
 Output:
 
-
-![Screenshot 2025-04-25 102406](https://github.com/user-attachments/assets/4a926356-22df-4a11-a5f8-6f7b374e2a86)
-
-
-
-
-
-
+<img width="1057" height="402" alt="image" src="https://github.com/user-attachments/assets/ca0a8d62-f8a2-41b3-a79e-277e41541b91" />
 
 Result:
 Thus, the program is verified successfully
@@ -241,7 +244,6 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
-
 ```
 #include <stdio.h>
 #include <stdlib.h>
@@ -273,20 +275,11 @@ int main()
     
     return 0;
 }
-
-
-
 ```
-
 Output:
 
 
-![Screenshot 2025-04-25 102526](https://github.com/user-attachments/assets/297a272e-1888-4dcc-a7ce-9b03c9c2bac3)
-
-
-
-
-
+<img width="792" height="214" alt="Screenshot 2025-11-18 103031" src="https://github.com/user-attachments/assets/26df1f2d-3a2b-49e9-8f09-7965e4d5c30e" />
 
 
 Result:
